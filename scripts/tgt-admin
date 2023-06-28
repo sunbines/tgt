@@ -1374,6 +1374,7 @@ sub execute {
 		# Don't try to execute if it's a comment
 		my @execargs = split(/#/, $args);
 		if ($execargs[0] ne undef) {
+			print "$args";
 			system($args);
 
 			# If non-zero exit code was return, exit
