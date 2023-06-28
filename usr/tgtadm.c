@@ -64,27 +64,20 @@ static const char *tgtadm_strerror(int err)
 		{ TGTADM_NO_BINDING, "can't find the binding" },
 		{ TGTADM_TARGET_EXIST, "this target already exists" },
 		{ TGTADM_BINDING_EXIST, "this binding already exists" },
-		{ TGTADM_LUN_EXIST,
-		  "this logical unit number already exists" },
-		{ TGTADM_ACL_EXIST,
-		  "this access control rule already exists" },
-		{ TGTADM_ACL_NOEXIST,
-		  "this access control rule does not exist" },
+		{ TGTADM_LUN_EXIST, "this logical unit number already exists" },
+		{ TGTADM_ACL_EXIST, "this access control rule already exists" },
+		{ TGTADM_ACL_NOEXIST, "this access control rule does not exist" },
 		{ TGTADM_USER_EXIST, "this account already exists" },
 		{ TGTADM_NO_USER, "can't find the account" },
 		{ TGTADM_TOO_MANY_USER, "too many accounts" },
 		{ TGTADM_INVALID_REQUEST, "invalid request" },
-		{ TGTADM_OUTACCOUNT_EXIST,
-		  "this target already has an outgoing account" },
+		{ TGTADM_OUTACCOUNT_EXIST, "this target already has an outgoing account" },
 		{ TGTADM_TARGET_ACTIVE, "this target is still active" },
-		{ TGTADM_LUN_ACTIVE,
-		  "this logical unit is still active" },
+		{ TGTADM_LUN_ACTIVE, "this logical unit is still active" },
 		{ TGTADM_DRIVER_ACTIVE, "this driver is busy" },
-		{ TGTADM_UNSUPPORTED_OPERATION,
-		  "this operation isn't supported" },
+		{ TGTADM_UNSUPPORTED_OPERATION, "this operation isn't supported" },
 		{ TGTADM_UNKNOWN_PARAM, "unknown parameter" },
-		{ TGTADM_PREVENT_REMOVAL,
-		  "this device has Prevent Removal set" }
+		{ TGTADM_PREVENT_REMOVAL, "this device has Prevent Removal set" }
 	};
 	int i;
 
@@ -925,8 +918,7 @@ int main(int argc, char **argv)
 		case OP_SHOW:
 			rc = verify_mode_params(argc, argv, "LmoC");
 			if (rc) {
-				eprintf("lld mode: option '-%c' is not "
-					"allowed/supported\n", rc);
+				eprintf("lld mode: option '-%c' is not allowed/supported\n", rc);
 				exit(EINVAL);
 			}
 			break;
@@ -956,42 +948,30 @@ int main(int argc, char **argv)
 		concat_printf(&b, "%spath=%s", concat_delim(&b, ","), path);
 
 	if (req->device_type == TYPE_TAPE)
-		concat_printf(&b, "%sbstype=%s", concat_delim(&b, ","),
-			      "ssc");
+		concat_printf(&b, "%sbstype=%s", concat_delim(&b, ","), "ssc");
 	else if (bstype)
-		concat_printf(&b, "%sbstype=%s", concat_delim(&b, ","),
-			      bstype);
+		concat_printf(&b, "%sbstype=%s", concat_delim(&b, ","), bstype);
 	if (bsopts)
-		concat_printf(&b, "%sbsopts=%s", concat_delim(&b, ","),
-			      bsopts);
+		concat_printf(&b, "%sbsopts=%s", concat_delim(&b, ","), bsopts);
 	if (bsoflags)
-		concat_printf(&b, "%sbsoflags=%s", concat_delim(&b, ","),
-			      bsoflags);
+		concat_printf(&b, "%sbsoflags=%s", concat_delim(&b, ","), bsoflags);
 	if (blocksize)
-		concat_printf(&b, "%sblocksize=%s", concat_delim(&b, ","),
-			      blocksize);
+		concat_printf(&b, "%sblocksize=%s", concat_delim(&b, ","), blocksize);
 	if (targetname)
-		concat_printf(&b, "%stargetname=%s", concat_delim(&b, ","),
-			      targetname);
+		concat_printf(&b, "%stargetname=%s", concat_delim(&b, ","), targetname);
 	if (address)
-		concat_printf(&b, "%sinitiator-address=%s",
-			      concat_delim(&b, ","), address);
+		concat_printf(&b, "%sinitiator-address=%s", concat_delim(&b, ","), address);
 	if (iqnname)
-		concat_printf(&b, "%sinitiator-name=%s", concat_delim(&b, ","),
-			      iqnname);
+		concat_printf(&b, "%sinitiator-name=%s", concat_delim(&b, ","), iqnname);
 	if (user)
-		concat_printf(&b, "%suser=%s", concat_delim(&b, ","),
-			      user);
+		concat_printf(&b, "%suser=%s", concat_delim(&b, ","), user);
 	if (password)
-		concat_printf(&b, "%spassword=%s", concat_delim(&b, ","),
-			      password);
+		concat_printf(&b, "%spassword=%s", concat_delim(&b, ","), password);
 	/* Trailing ',' makes parsing params in modules easier.. */
 	if (targetOps)
-		concat_printf(&b, "%stargetOps %s,", concat_delim(&b, ","),
-			      targetOps);
+		concat_printf(&b, "%stargetOps %s,", concat_delim(&b, ","), targetOps);
 	if (portalOps)
-		concat_printf(&b, "%sportalOps %s,", concat_delim(&b, ","),
-			      portalOps);
+		concat_printf(&b, "%sportalOps %s,", concat_delim(&b, ","), portalOps);
 
 	if (b.err) {
 		eprintf("BUFSIZE (%zu bytes) isn't long enough\n", b.size + 1);

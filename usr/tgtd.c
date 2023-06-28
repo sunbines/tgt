@@ -566,8 +566,7 @@ int main(int argc, char **argv)
 
 	opterr = 0;
 
-	while ((ch = getopt_long(argc, argv, short_options, long_options,
-				 &longindex)) >= 0) {
+	while ((ch = getopt_long(argc, argv, short_options, long_options, &longindex)) >= 0) {
 		switch (ch) {
 		case 'f':
 			is_daemon = 0;
